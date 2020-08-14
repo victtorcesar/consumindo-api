@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+
+    </main>
+    <script>
+        async function getContent(){
+            try {
+                const resposta = await fetch('http://localhost:3030/')
+                // console.log('Foi!')
+                const data = await resposta.json()
+                
+                show(data)
+            
+            } catch (error) {
+                console.log('Deu pau na maquina')
+            }
+        }
+        getContent()
+
+        function show(users){
+            let output = ''
+
+            for( let user of users){
+                output += `<li>${user.name}`
+            }
+            document.querySelector('main').innerHTML = output
+        }
+    </script>
+</body>
+</html>
